@@ -14,8 +14,10 @@ const props = defineProps({
 const dataHeader = ref([] as string[]);
 const data = ref([] as { [key: string]: string }[]);
 
-const selectFile = (event: FileUploadSelectEvent) => {
+const selectFile = (ev: Event) => {
     const reader = new FileReader();
+    const event = ev as unknown as FileUploadSelectEvent;
+    const file: File = (event.files as FileList)[0];
     reader.onload = function (e) {
         if (typeof e.target?.result === 'string') {
             const dataArray = e.target?.result.split(props.rowSeparator)
@@ -23,14 +25,19 @@ const selectFile = (event: FileUploadSelectEvent) => {
                 .map((line) => line.split(props.columnSeparator));
             if (dataArray.length >= 2) {
                 const keys = dataArray.shift() as string[];
-                data.value = dataArray.map((values: string[]) => {
-                    return Object.assign.apply({}, keys.map((v, i) => ({ [v]: values[i] }))) as { [key: string]: string }
-                });
+                const merge = (values: string[]) => {
+                    const merged = {} as { [key: string]: string };
+                    for (let i = 0; i < values.length; i++) {
+                        merged[keys[i]] = values[i];
+                    }
+                    return merged;
+                };
+                data.value = dataArray.map((values: string[]) => merge(values));
                 dataHeader.value = keys;
             }
         }
     }
-    reader.readAsText(event.files[0], props.encoding);
+    reader.readAsText(file, props.encoding);
 }
 
 const onCellEditComplete = (event: DataTableCellEditCompleteEvent) => {

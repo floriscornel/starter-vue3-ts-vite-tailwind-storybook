@@ -1,9 +1,9 @@
 <template>
   <div class="p-4">
-    <HelloWorld msg="TEST" />
+    <CsvEditor />
   </div>
 </template>
 
 <script lang="ts" setup>
-import HelloWorld from '../components/HelloWorld.vue';
+import CsvEditor from '../components/CsvEditor.vue';
 </script>
