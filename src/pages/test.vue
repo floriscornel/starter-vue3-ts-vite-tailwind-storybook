@@ -1,7 +1,9 @@
 <template>
   <div class="p-4">
-    <h1>TEST 123</h1>
+    <CsvEditor />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import CsvEditor from '../components/CsvEditor.vue';
+</script>
