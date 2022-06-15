@@ -1,5 +1,5 @@
 <template>
-  <div className="p-4">
+  <div class="p-4">
     <HelloWorld msg="TEST" />
   </div>
 </template>
