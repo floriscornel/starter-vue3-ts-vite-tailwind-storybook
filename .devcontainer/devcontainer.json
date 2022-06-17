@@ -1,0 +1,28 @@
+{
+    "name": "Codespaces Node.js Starter",
+    "extensions": [
+        "Vue.volar",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "usernamehw.errorlens",
+        "coenraads.bracket-pair-colorizer-2",
+        "cschleiden.vscode-github-actions",
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "ms-azuretools.vscode-docker",
+        "vscode-icons-team.vscode-icons",
+        "visualstudioexptteam.vscodeintellicode"
+    ],
+    "dockerFile": "Dockerfile",
+    "settings": {
+        "terminal.integrated.profiles.linux": {
+            "zsh": {
+                "path": "zsh"
+            }
+        },
+        "files.exclude": {
+            "**/README.md": true
+        }
+    }
+}
